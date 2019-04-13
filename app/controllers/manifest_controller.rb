@@ -6,7 +6,14 @@ class ManifestController < ApplicationController
         "name": "PWAサンプル",
         "short_name": "PWAサンプル",
         "start_url": project_url(project),
-        "display": "standalone"
+        "display": "standalone",
+        "icons": [
+          {
+            "src": "apple-touch-icon.png",
+            "type": "image/png",
+            "sizes": "192x192"
+          }
+        ],
       }
     else
       render json: {}, status: :not_found
