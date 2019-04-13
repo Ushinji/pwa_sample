@@ -1,3 +1,3 @@
 # What
 
-PWA sample application. Support dynamic manifest setting, but this app don't support service workers.
+PWA sample application. This app support dynamic manifest setting, but don't support service workers.
