@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: "./"
+      target: "base"
+    command: [ "bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0" ]
+    volumes:
+      - ".:/app"
+      - "bundle:/usr/local/bundle"
+    environment:
+      RAILS_ENV: development
+      DATABASE_USER: root
+      DATABASE_PASSWORD: pwa_sample
+      DATABASE_HOST: db
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: pwa_sample
+    volumes:
+      - "db-data:/var/lib/mysql"
+      - "./template/mysql/conf.d:/etc/mysql/conf.d"
+    ports:
+      - '3316:3306'
+
+volumes:
+  db-data:
+    driver: local
+  bundle:
+    driver: local

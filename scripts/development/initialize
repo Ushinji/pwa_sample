@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo '### start initialize ###'
+echo ''
+
+docker-compose build
+docker-compose run --rm app bundle install
+docker-compose run --rm app rails new . --database=mysql --skip-turbolinks --skip-git --skip-test --skip-bundle --force
+cp template/database.yml config/database.yml
